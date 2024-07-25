@@ -40,11 +40,14 @@ class PrimaryButton extends StatelessWidget {
                   Text(
                     btnName,
                     style: TextStyle(
-                        fontSize: 18,
-                        fontWeight: FontWeight.bold,
-                        letterSpacing: 1.5,
-                        // ignore: deprecated_member_use
-                        color: Theme.of(context).colorScheme.background),
+                      fontSize: 18,
+                      fontWeight: FontWeight.bold,
+                      letterSpacing: 1.5,
+                      // ignore: deprecated_member_use
+                      color: bmiController.gender.value == btnName
+                          ? Theme.of(context).colorScheme.primaryContainer
+                          : Theme.of(context).colorScheme.primary,
+                    ),
                   )
                 ],
               ),
