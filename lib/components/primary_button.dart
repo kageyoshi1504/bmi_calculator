@@ -1,4 +1,6 @@
+import 'package:bmi_app/controllers/bmi_controllers.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class PrimaryButton extends StatelessWidget {
   const PrimaryButton({
@@ -13,36 +15,40 @@ class PrimaryButton extends StatelessWidget {
   final VoidCallback onTap;
   @override
   Widget build(BuildContext context) {
+    BmiController bmiController = Get.put(BmiController());
+
     return Expanded(
       child: GestureDetector(
         onTap: onTap,
-        child: Container(
-          height: 50,
-          padding: const EdgeInsets.all(10),
-          decoration: BoxDecoration(
-              color: Theme.of(context).colorScheme.primary,
-              borderRadius: BorderRadius.circular(12)),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Icon(
-                icon,
-                // ignore: deprecated_member_use
-                color: Theme.of(context).colorScheme.background,
-              ),
-              const SizedBox(width: 10),
-              Text(
-                btnName,
-                style: TextStyle(
-                    fontSize: 18,
-                    fontWeight: FontWeight.bold,
-                    letterSpacing: 1.5,
+        child: Obx(() => Container(
+              height: 50,
+              padding: const EdgeInsets.all(10),
+              decoration: BoxDecoration(
+                  color: bmiController.gender.value == btnName
+                      ? Theme.of(context).colorScheme.primary
+                      : Theme.of(context).colorScheme.primaryContainer,
+                  borderRadius: BorderRadius.circular(12)),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Icon(
+                    icon,
                     // ignore: deprecated_member_use
-                    color: Theme.of(context).colorScheme.background),
-              )
-            ],
-          ),
-        ),
+                    color: Theme.of(context).colorScheme.background,
+                  ),
+                  const SizedBox(width: 10),
+                  Text(
+                    btnName,
+                    style: TextStyle(
+                        fontSize: 18,
+                        fontWeight: FontWeight.bold,
+                        letterSpacing: 1.5,
+                        // ignore: deprecated_member_use
+                        color: Theme.of(context).colorScheme.background),
+                  )
+                ],
+              ),
+            )),
       ),
     );
   }

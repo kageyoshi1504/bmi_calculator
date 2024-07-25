@@ -1,7 +1,9 @@
 import 'package:bmi_app/components/age_selector.dart';
 import 'package:bmi_app/components/height_selector.dart';
 import 'package:bmi_app/components/theme_change_btn.dart';
+import 'package:bmi_app/controllers/bmi_controllers.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import '../components/primary_button.dart';
 import '../components/weight_selector.dart';
 
@@ -10,6 +12,7 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    BmiController bmiController = Get.put(BmiController());
     return Scaffold(
       body: SafeArea(
           child: Padding(
@@ -46,13 +49,19 @@ class HomePage extends StatelessWidget {
                 PrimaryButton(
                   icon: Icons.male,
                   btnName: 'Male',
-                  onTap: () {},
+                  onTap: () {
+                    bmiController.genderHandle('Male');
+                    print('Male');
+                  },
                 ),
                 const SizedBox(width: 20),
                 PrimaryButton(
                   icon: Icons.female,
-                  btnName: 'Fe Male',
-                  onTap: () {},
+                  btnName: 'FeMale',
+                  onTap: () {
+                    bmiController.genderHandle('FeMale');
+                    print('FeMale');
+                  },
                 ),
               ],
             ),
