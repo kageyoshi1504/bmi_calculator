@@ -1,5 +1,7 @@
+import 'package:bmi_app/controllers/bmi_controllers.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 import 'sec_btn.dart';
 
@@ -10,6 +12,7 @@ class AgeSelector extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    BmiController bmiController = BmiController.instance;
     return Container(
       padding: const EdgeInsets.all(10),
       decoration: BoxDecoration(
@@ -37,15 +40,17 @@ class AgeSelector extends StatelessWidget {
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Text(
-                '15',
-                style: TextStyle(
-                    fontSize: 70,
-                    fontWeight: FontWeight.bold,
-                    color: Theme.of(context)
-                        .colorScheme
-                        // ignore: deprecated_member_use
-                        .onBackground),
+              Obx(
+                () => Text(
+                  '${bmiController.age.value}',
+                  style: TextStyle(
+                      fontSize: 70,
+                      fontWeight: FontWeight.bold,
+                      color: Theme.of(context)
+                          .colorScheme
+                          // ignore: deprecated_member_use
+                          .onBackground),
+                ),
               ),
             ],
           ),
@@ -54,11 +59,17 @@ class AgeSelector extends StatelessWidget {
             children: [
               SecBtn(
                 icon: Icons.add,
-                onTap: () {},
+                onTap: () {
+                  bmiController.age.value++;
+                },
               ),
               SecBtn(
                 icon: CupertinoIcons.minus,
-                onTap: () {},
+                onTap: () {
+                  if (bmiController.age.value != 0) {
+                    bmiController.age.value--;
+                  }
+                },
               ),
             ],
           )

@@ -1,5 +1,7 @@
+import 'package:bmi_app/controllers/bmi_controllers.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 import 'sec_btn.dart';
 
@@ -10,6 +12,7 @@ class WeightSelector extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    BmiController bmiController = BmiController.instance;
     return Container(
       padding: const EdgeInsets.all(10),
       decoration: BoxDecoration(
@@ -37,16 +40,16 @@ class WeightSelector extends StatelessWidget {
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Text(
-                '45',
-                style: TextStyle(
-                    fontSize: 70,
-                    fontWeight: FontWeight.bold,
-                    color: Theme.of(context)
-                        .colorScheme
-                        // ignore: deprecated_member_use
-                        .onBackground),
-              ),
+              Obx(() => Text(
+                    '${bmiController.weight.value}',
+                    style: TextStyle(
+                        fontSize: 70,
+                        fontWeight: FontWeight.bold,
+                        color: Theme.of(context)
+                            .colorScheme
+                            // ignore: deprecated_member_use
+                            .onBackground),
+                  )),
             ],
           ),
           Row(
@@ -54,11 +57,17 @@ class WeightSelector extends StatelessWidget {
             children: [
               SecBtn(
                 icon: Icons.add,
-                onTap: () {},
+                onTap: () {
+                  bmiController.weight.value++;
+                },
               ),
               SecBtn(
                 icon: CupertinoIcons.minus,
-                onTap: () {},
+                onTap: () {
+                  if (bmiController.weight.value != 0) {
+                    bmiController.weight.value--;
+                  }
+                },
               ),
             ],
           )
