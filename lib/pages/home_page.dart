@@ -1,11 +1,7 @@
 import 'package:bmi_app/components/age_selector.dart';
 import 'package:bmi_app/components/height_selector.dart';
 import 'package:bmi_app/components/theme_change_btn.dart';
-import 'package:bmi_app/controllers/theme_controllers.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
-import 'package:get/get.dart';
-
 import '../components/primary_button.dart';
 import '../components/weight_selector.dart';
 
@@ -14,7 +10,6 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    ThemeControllers themeControllers = Get.put(ThemeControllers());
     return Scaffold(
       body: SafeArea(
           child: Padding(

@@ -7,8 +7,5 @@ class ThemeControllers extends GetxController {
   void changeTheme() async {
     isDark.value = !isDark.value;
     Get.changeThemeMode(isDark.value ? ThemeMode.dark : ThemeMode.light);
-  
-  
-  
   }
 }
