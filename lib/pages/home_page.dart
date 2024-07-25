@@ -1,3 +1,4 @@
+import 'package:bmi_app/components/age_selector.dart';
 import 'package:bmi_app/components/height_selector.dart';
 import 'package:bmi_app/components/theme_change_btn.dart';
 import 'package:bmi_app/controllers/theme_controllers.dart';
@@ -6,6 +7,7 @@ import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 
 import '../components/primary_button.dart';
+import '../components/weight_selector.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
@@ -44,62 +46,49 @@ class HomePage extends StatelessWidget {
               ],
             ),
             const SizedBox(height: 20),
-            const Row(
+            Row(
               children: [
                 PrimaryButton(
                   icon: Icons.male,
                   btnName: 'Male',
+                  onTap: () {},
                 ),
-                SizedBox(width: 20),
+                const SizedBox(width: 20),
                 PrimaryButton(
                   icon: Icons.female,
                   btnName: 'Fe Male',
+                  onTap: () {},
                 ),
               ],
             ),
             const SizedBox(height: 20),
-            Expanded(
+            const Expanded(
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  const HeightSelector(),
-                  const SizedBox(width: 15),
+                  HeightSelector(),
+                  SizedBox(width: 20),
                   Expanded(
                     child: Column(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        Container(
-                          padding: const EdgeInsets.all(10),
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(10),
-                            color:
-                                Theme.of(context).colorScheme.primaryContainer,
-                          ),
-                          height: 200,
-                          child: Column(
-                            children: [
-                              Row(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: [
-                                  Text(
-                                    'Weight',
-                                    style: TextStyle(
-                                        fontSize: 18,
-                                        color: Theme.of(context)
-                                            .colorScheme
-                                            // ignore: deprecated_member_use
-                                            .onBackground),
-                                  ),
-                                ],
-                              ),
-                            ],
-                          ),
-                        ),
+                        WeightSelector(),
+                        SizedBox(height: 30),
+                        AgeSelector(),
                       ],
                     ),
                   ),
                 ],
               ),
             ),
+            const SizedBox(height: 20),
+            SizedBox(
+                height: 50,
+                child: PrimaryButton(
+                  icon: Icons.done,
+                  btnName: "Let's Go",
+                  onTap: () {},
+                )),
           ],
         ),
       )),
