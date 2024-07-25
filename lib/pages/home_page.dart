@@ -1,7 +1,9 @@
 import 'package:bmi_app/components/age_selector.dart';
 import 'package:bmi_app/components/height_selector.dart';
+import 'package:bmi_app/components/ract_button.dart';
 import 'package:bmi_app/components/theme_change_btn.dart';
 import 'package:bmi_app/controllers/bmi_controllers.dart';
+import 'package:bmi_app/pages/result_page.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import '../components/primary_button.dart';
@@ -86,13 +88,20 @@ class HomePage extends StatelessWidget {
               ),
             ),
             const SizedBox(height: 20),
-            SizedBox(
-                height: 50,
-                child: PrimaryButton(
-                  icon: Icons.done,
-                  btnName: "Let's Go",
-                  onTap: () {},
-                )),
+            // SizedBox(
+            //     height: 50,
+            //     child: PrimaryButton(
+            //       icon: Icons.done,
+            //       btnName: "Let's Go",
+            //       onTap: () {},
+            //     )),
+
+            RactButton(
+                icon: Icons.done_all_rounded,
+                btnName: "Let's Go",
+                onTap: () {
+                  Get.to(const ResultPage());
+                })
           ],
         ),
       )),

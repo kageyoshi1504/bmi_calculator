@@ -34,7 +34,9 @@ class PrimaryButton extends StatelessWidget {
                   Icon(
                     icon,
                     // ignore: deprecated_member_use
-                    color: Theme.of(context).colorScheme.background,
+                    color: bmiController.gender.value == btnName
+                        ? Theme.of(context).colorScheme.primaryContainer
+                        : Theme.of(context).colorScheme.primary,
                   ),
                   const SizedBox(width: 10),
                   Text(

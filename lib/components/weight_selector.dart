@@ -19,8 +19,9 @@ class WeightSelector extends StatelessWidget {
         borderRadius: BorderRadius.circular(10),
         color: Theme.of(context).colorScheme.primaryContainer,
       ),
-      height: 200,
+      height: 240,
       child: Column(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
@@ -36,7 +37,6 @@ class WeightSelector extends StatelessWidget {
               ),
             ],
           ),
-          const SizedBox(height: 10),
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
